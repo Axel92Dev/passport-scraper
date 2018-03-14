@@ -1,0 +1,19 @@
+{
+  "name": "passport-scraper",
+  "version": "1.0.0",
+  "description": "A node.js scraper to get an appointment for passpor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/alromano/passport-scraper.git"
+  },
+  "author": "Alessandro Romano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/alromano/passport-scraper/issues"
+  },
+  "homepage": "https://gitlab.com/alromano/passport-scraper#README"
+}
