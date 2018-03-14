@@ -18,6 +18,7 @@
   },
   "homepage": "https://gitlab.com/alromano/passport-scraper#README",
   "dependencies": {
+    "nodemailer": "^4.6.3",
     "puppeteer": "^1.1.1"
   }
 }
