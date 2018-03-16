@@ -11,39 +11,46 @@ const LOGIN_URL = 'https://www.passaportonline.poliziadistato.it/logInCittadino.
 
 async function run() {
     const browser = await puppeteer.launch();
-    const page = await browser.newPage();
 
-    await page.goto(LOGIN_URL);
-    // await page.screenshot({
-    //     path: 'screenshots/login.png'
-    // });
+    try {
+        const page = await browser.newPage();
 
-    await page.click(USERNAME_SELECTOR);
-    await page.keyboard.type(credentials.username);
+        await page.goto(LOGIN_URL);
+        // await page.screenshot({
+        //     path: 'screenshots/login.png'
+        // });
 
-    await page.click(PASSWORD_SELECTOR);
-    await page.keyboard.type(credentials.password);
+        await page.click(USERNAME_SELECTOR);
+        await page.keyboard.type(credentials.username);
 
-    await page.click(SUBMIT_SELECTOR);
+        await page.click(PASSWORD_SELECTOR);
+        await page.keyboard.type(credentials.password);
 
-    await page.waitForNavigation();
+        await page.click(SUBMIT_SELECTOR);
 
-    await page.click(SEARCH_PROVINCE_SELECTOR);
-    await page.waitForNavigation();
+        await page.waitForNavigation();
 
-    const availabilityTds = await page.evaluate((sel) => {
-        return Array.from(document.querySelectorAll(sel)).map((td) => td.innerText);
-    }, TD_AVAILABILITY_SELECTOR);
+        await page.click(SEARCH_PROVINCE_SELECTOR);
+        await page.waitForNavigation();
 
-    if (availabilityTds.find((yesOrNo) => yesOrNo !== 'No')) {
-        console.log('there is availability!');
+        const availabilityTds = await page.evaluate((sel) => {
+            return Array.from(document.querySelectorAll(sel)).map((td) => td.innerText);
+        }, TD_AVAILABILITY_SELECTOR);
 
-        await page.screenshot({
-            path: 'screenshots/disp.png'
-        });
+        if (availabilityTds.find((yesOrNo) => yesOrNo !== 'No')) {
+            console.log('there is availability!');
+
+            await page.screenshot({
+                path: 'screenshots/disp.png'
+            });
+        } else {
+            console.log('no availability');
+        }
+    } catch (err) {
+        console.log(err);
+    } finally {
+        browser.close();
     }
-
-    browser.close();
 }
 
-run();
+setInterval(() => run(), 1000 * 60);
