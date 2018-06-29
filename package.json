@@ -1,7 +1,7 @@
 {
   "name": "@axel92/passport-scraper",
   "version": "1.0.0",
-  "description": "A node.js scraper to get an appointment for passpor",
+  "description": "A node.js scraper to get an appointment for passport (passaporto italiano)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
