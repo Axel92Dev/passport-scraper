@@ -1,7 +1,11 @@
 # Passport Appointment Availability Scraper (PaaS)
 Stanco di non trovare disponibilità in Questura per l'appuntamento relativo al rilascio del passaporto? (https://www.passaportonline.poliziadistato.it/) Hai trovato lo script che fa per te!
 
+Disponibile anche su npm -> https://www.npmjs.com/package/@axel92/passport-scraper
+
+
 ## How to use
+- Clona il progetto
 - ```npm install```
 - Crea un file chiamato `credentials.js` contenente un oggetto di questo tipo:
     ```
